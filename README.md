@@ -6,7 +6,7 @@ It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css` and 
 
 ### !Important
 
-- While using modules always set an extension to the improted file's path! Even for \*\*.js files! Or you'll get an exception and `webpack` will crash.
+- While using modules always set an extension to the imported file's path! Even for `*.js` files! Or you'll get an exception and `webpack` will crash.
 - Before usage - update packages and dependency versions (instruction below), than run script for build (to test for errors) (e,g, `npm run build`). Otherwise cure the exceptions(((
 - don't forget to rename all the `<project_name>` or `projectName` names to desired one! Also check the following list of files, folders and linked things, to insure about the replacement:
   - `./projectName`;
@@ -67,13 +67,13 @@ Also there's a helper functions to deal with files when they are renamed with ad
 
 `webpack` uses:
 
-- `html-loader` for ability to load `.html` files into \*\*.js one;
+- `html-loader` for ability to load `.html` files into `*.js` one;
 - `html-webpack-plugin` to nest final `script.js` file (currently to the `head` of html file. Check `inject: 'head'` option in the `./configs/webpack/webpack.config.js` HtmlWebpackPlugin options) and final `main.css` styles file to the final html template.
 - `image-webpack-loader` - fable thing to reduce size of the image resources with near-zero loses of image quality;
 - `mini-css-extract-plugin` - to bundle final external css file;
 - `resolve-url-loader` - loader for Sass to ease assets pathes' setting relying on current file but not to the output one (note: `sourceMap: true` in the `sass-loader` options is lifeworth required for working the plugin!!!);
 - `sass` - for using all SCSS / Sass features;
-- `sass-loader` - loader for ability to read and use `.scss` / `.sass` files inside `**.js` one;
+- `sass-loader` - loader for ability to read and use `.scss` / `.sass` files inside `*.js` one;
 
 #### SCSS / Sass
 
@@ -122,7 +122,7 @@ There's a `htmlCreateComponentHelper` custom made by myself simple utility (comm
     - `./projectName/src/components/components` - components are particularly independent parts of a app. They generally consist of `*.html` + `*.scss` | `*.css` + `*.js` files and can be used again and again in a future project or even far another project (with a few modifications of a required files);
     - `./projectName/src/components/layout` - include `_content-structure.scss` file with basic layouts to use in a future project (one column or multiple columns as basic (or foundation as you wish) and they can be easily added with the necessary property modificators of new styling classes (e.g. for current paragraph or section to align everything to the center etc as BEM recommends)) (`_content-structure.scss` rely on `flex` or `grid` basics, also depend on mixins in the `projectName\src\components\abstracts\_mixins.scss` file so check it out or modify for your needs);
     - `./projectName/src/components/projectNameSelfCheck` - there's a tempalte for logging self - check of the task (the Rolling Scopes School for only. Can be deleted easily and don't forget to delete the file's import from `projectName\src\components\index.js`!);
-    - `projectName\src\components\utilities` - as described above it's an utility to turn your `*.html` file improted to the `*.js` code into the `html template` to use it in your app (e.g. in a SPA);
+    - `projectName\src\components\utilities` - as described above it's an utility to turn your `*.html` file improted to the `*.js` code into the `html template` to use it in your app (e.g. in a `SPA`);
     - `projectName\src\components\index_gulp_include.html` - file that includes `@@include("path/to/html/file")` to be bundled than to a enormous `html bedsheet` => `index.html` (it lye next to `index_gulp_include.html` file). It's far sweet to edit chunks of html files (in `components`) than 'wade through the jungle' of `html bedsheet` as for me;
     - `./projectName/src/components/index.html` - described right above;
     - `./projectName/src/components/projectName.scss` - file with Sass styles that persue the same goal as `index.html` above - bundle styles;
