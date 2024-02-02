@@ -192,6 +192,12 @@ There's a `htmlCreateComponentHelper` custom made by myself simple utility (comm
 
 ---
 
+#### BEM
+
+- [Official BEM docs: Quick start](https://en.bem.info/methodology/quick-start/);
+
+---
+
 #### Node.js
 
 - [Official node.js docs](https://nodejs.org/docs/latest/api/globals.html);
