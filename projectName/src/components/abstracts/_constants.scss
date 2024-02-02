@@ -1,0 +1,31 @@
+// colors
+$color-background-dark: #0c0c0e;
+$background-radient: linear-gradient(
+  180deg,
+  #0c0c0e 0%,
+  #0c0c0e 0.01%,
+  rgba(18, 18, 21, 0.1) 100%
+);
+
+$color-interactive: #bb945f;
+
+$color-dark: #000000;
+$color-light: #ffffff;
+
+$color-social: #f5efdb;
+
+$color-modal: #8e8e8e;
+
+// user width
+$width-desktop: 1440px;
+$width-tablet-large: 1024px;
+$width-tablet: 768px;
+$width-tablet-small: 640px;
+
+// content width
+$content-width-desktop: 1400px;
+$content-width-tablet: 728px;
+
+// media padding
+$padding-content-desktop: 20px;
+$padding-content-tablet: 20px;
