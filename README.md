@@ -69,7 +69,7 @@ Also there's a helper functions to deal with files when they are renamed with ad
 
 - `html-loader` for ability to load `.html` files into `*.js` one;
 - `html-webpack-plugin` to nest final `script.js` file (currently to the `head` of html file. Check `inject: 'head'` option in the `./configs/webpack/webpack.config.js` HtmlWebpackPlugin options) and final `main.css` styles file to the final html template.
-- `image-webpack-loader` - fable thing to reduce size of the image resources with near-zero loses of image quality;
+- `image-minimizer-webpack-plugin`, `imagemin`, `imagemin-gifsicle`, `imagemin-jpegtran`, `imagemin-optipng`, `imagemin-svgo` - a fable things to reduce size of the image resources with lossless quality optimization (can be changed, use offical docs for more);
 - `mini-css-extract-plugin` - to bundle final external css file;
 - `resolve-url-loader` - loader for Sass to ease assets pathes' setting relying on current file but not to the output one (note: `sourceMap: true` in the `sass-loader` options is lifeworth required for working the plugin!!!);
 - `sass` - for using all SCSS / Sass features;
@@ -179,9 +179,13 @@ There's a `htmlCreateComponentHelper` custom made by myself simple utility (comm
 - [Official github repo of resolve-url-loader docs](https://github.com/bholloway/resolve-url-loader/blob/v5/packages/resolve-url-loader/README.md);
 - [Official webpack docs: mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/#root);
 - [Official github repo of mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin);
-- [Official github repo of image-webpack-loader](https://github.com/tcoopman/image-webpack-loader);
-- [Official webpack docs: ImageMinimizerWebpackPlugin](https://webpack.js.org/plugins/image-minimizer-webpack-plugin/#standalone-loader);
-- [Official github repo of ImageMinimizerWebpackPlugin](https://github.com/webpack-contrib/image-minimizer-webpack-plugin);
+- [Official webpack docs: ImageMinimizerWebpackPlugin](https://webpack.js.org/plugins/image-minimizer-webpack-plugin/);
+- [Official github repo of image-minimizer-webpack-plugin](https://github.com/webpack-contrib/image-minimizer-webpack-plugin);
+- [Official github repo of imagemin](https://github.com/imagemin/imagemin);
+- [Official github repo of imagemin-gifsicle](https://github.com/imagemin/imagemin-gifsicle);
+- [Official github repo of imagemin-jpegtran](https://github.com/imagemin/imagemin-jpegtran);
+- [Official github repo of imagemin-optipng](https://github.com/imagemin/imagemin-optipng);
+- [Official github repo of imagemin-svgo](https://github.com/imagemin/imagemin-svgo);
 
 ---
 
