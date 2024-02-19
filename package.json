@@ -28,9 +28,9 @@
   "author": "Dmitriy Frostoff",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components.git/issues"
+    "url": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components/issues"
   },
-  "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components.git#readme",
+  "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components#readme",
   "devDependencies": {
     "css-loader": "^6.10.0",
     "gulp": "^4.0.2",
