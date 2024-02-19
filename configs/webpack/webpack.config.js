@@ -46,7 +46,6 @@ export default {
   devServer: {
     port: 8080,
     host: 'localhost',
-    https: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
