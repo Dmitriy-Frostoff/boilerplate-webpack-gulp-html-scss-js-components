@@ -38,18 +38,26 @@ To update one `package` (note: this command do not update devDependency in the p
 To update all the outdated packages and refresh all devDependencies in the package.json:  
 `npm update --save`
 
-To delete an unnecessary `package` use following command ([official npm Docs](https://docs.npmjs.com/uninstalling-packages-and-dependencies)):  
+**!important**: never use the `npm-check-updates` in a way as below in a prodaction, this one is only for updating to the latest packages' versions of the boilerplate:
+
+```bash
+npx npm-check-updates -u
+npm install
+```
+
+The `npx npm-check-updates -u` command will **overwrite** the versions of **all** the project packages to the latest ones,
+than will install them. (check the [How can I update each dependency in package.json to the latest version?](https://stackoverflow.com/questions/16073603/how-can-i-update-each-dependency-in-package-json-to-the-latest-version) for details).
+
+To delete an unnecessary `package` use the following command ([official npm Docs](https://docs.npmjs.com/uninstalling-packages-and-dependencies)):  
 `npm uninstall <package_name>`  
 Note: don't forget to check `scripts` in the `package.json` to delete unnecessary one.
-
----
 
 The boilerplate is set to use ECMAScript modules (ESM) (see the `package.json` => `{"type": "module"}`);
 
 #### gulp
 
-`gulp` is turned to bundle multiple html components into the one `index_gulp_include.html` (path: `<project_name>/src/components/index_gulp_include.html`)).  
-Also `gulp` replace html chunkes' inner assets' pathes to be valid to output `index_gulp_include.html` file and then copy and rename it to `index.html` (output `index.html` file path: `<project_name>/src/components/index.html`).  
+`gulp` is turned to bundle multiple html components into the one `index_gulp_include.html` (path: `<project_name>/src/components/index_gulp_include.html`)).
+Also `gulp` replace html chunkes' inner assets' pathes to be valid to output `index_gulp_include.html` file and then copy and rename it to `index.html` (output `index.html` file path: `<project_name>/src/components/index.html`).
 (check out the `./configs/gulp/gulpfile.js` file for details);
 
 `gulp` uses:
@@ -62,7 +70,7 @@ Also `gulp` replace html chunkes' inner assets' pathes to be valid to output `in
 
 `webpack` is turned to bundle all assets and reduce final bundle (for example: images are minimized as possible) to have as result `main.js`, `index.html`, `main.css` and `src/assets` (file structure is save as is! check my custom made function in the `output.assetModuleFilename`. It was made relying on this [webpack 5 assetModuleFilename stackoverflow.com](https://stackoverflow.com/questions/68814833/webpack-5-assets-module-how-to-keep-the-folder-structure-in-the-output-folder)).
 
-Also there's a helper functions to deal with files when they are renamed with additional hash and to import all the assets to the bundle (to use them in future, e.g. not currently desired image, and next one too) (check the `projectName/src/components/base/favorities-slider/_favoritiesSlider.js` file for `getCashedFilename` and `importAll` functions)  
+Also there's a helper functions to deal with files when they are renamed with additional hash and to import all the assets to the bundle (to use them in future, e.g. not currently desired image, and next one too) (check the `projectName/src/components/base/favorities-slider/_favoritiesSlider.js` file for `getCashedFilename` and `importAll` functions)
 (check this [webpack official docs link about the dealing with files' hash](https://webpack.js.org/guides/dependency-management/#context-module-api) and [How to copy all images to dist folder instead of only used with webpack 5 stackoverflow.com](https://stackoverflow.com/questions/69120556/how-to-copy-all-images-to-dist-folder-instead-of-only-used-with-webpack-5)).
 
 `webpack` uses:
@@ -115,7 +123,7 @@ There's a `htmlCreateComponentHelper` custom made by myself simple utility (comm
   - `./projectName/src/assets` - all the images, icons, fonts, music, video etc sources of a future project as is;
   - `./projectName/src/components` - all the structural and meaningful parts of a project:
     - `./projectName/src/components/abstracts` - contains parts that are used in a entire future project. There's animations, constants, mixins (like simple functions but in Sass), placeholders (behaves a bit like variables in Sass but more powerfull. Check the official docs for more);
-    - `./projectName/src/components/base` - there're Blocks (in BEM terminology). For now there're  
+    - `./projectName/src/components/base` - there're Blocks (in BEM terminology). For now there're
       `_normalize.scss` (to softly set your browser default styles to be more 'average' with others one to ease the process of crossbrowsers development),
       `_typography.scss` - this file includes font data and variables of font size as for example,
       `_common.scss` - this file contains the most basic classes of a project perfomance like titles properties, containers properties, modificators for text classes;
@@ -158,8 +166,8 @@ There's a `htmlCreateComponentHelper` custom made by myself simple utility (comm
 - [Official github repo of webpack](https://github.com/webpack/webpack);
 - [The official docs of Webpack: Concepts](https://webpack.js.org/concepts/);
 - [The official docs of Webpack: Command Line Interface](https://webpack.js.org/api/cli);
-- [A mostly complete guide to webpack 5 (2020) by Valentino Gagliardi](https://www.valentinog.com/blog/webpack/)  
-   (note: a little bit outdated. There's a CMJ webpack config was used, but never the less is far usefull!!!);
+- [A mostly complete guide to webpack 5 (2020) by Valentino Gagliardi](https://www.valentinog.com/blog/webpack/)
+  (note: a little bit outdated. There's a CMJ webpack config was used, but never the less is far usefull!!!);
 - [How to transpile ES modules with webpack and Node.js, Dec 15, 2021 by Alexander Nnakwue](https://blog.logrocket.com/transpile-es-modules-with-webpack-node-js/);
 - [Stackoverflow.com answers about dealling with ES modules and '\_\_dirname' in node.js](https://stackoverflow.com/questions/46745014/alternative-for-dirname-in-node-js-when-using-es6-modules);
 - [Official github repo of webpack-cli](https://github.com/webpack/webpack-cli);
@@ -208,4 +216,4 @@ There's a `htmlCreateComponentHelper` custom made by myself simple utility (comm
 - [Official node.js docs: \_\_dirname](https://nodejs.org/docs/latest/api/modules.html#__dirname);
 - [Official node.js docs: \_\_filename](https://nodejs.org/docs/latest/api/modules.html#__filename);
 
-#### done: February 20, 2024
+#### done: March 02, 2024
