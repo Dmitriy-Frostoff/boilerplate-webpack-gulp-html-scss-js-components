@@ -10,12 +10,11 @@ It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css` and 
 - Before usage - update packages and dependency versions (instruction below), than run script for build (to test for errors) (e,g, `npm run build`). Otherwise cure the exceptions(((
 - don't forget to rename all the `<project_name>` or `projectName` names to desired one! Also check the following list of files, folders and linked things, to insure about the replacement:
   - `./projectName`;
-  - `projectName.scss` (path: `projectName/src/components/projectName.scss`);
   - `gulpfile.js` all the `src` and `dest` etc (path: `./configs/gulp/gulpfile.js`);
   - `webpack.config.js` all the occurrences of `projectName` in the `entry`, `output` etc (path: `./configs/webpack/webpack.config.js`);
-  - `index.js` all the occurrences of `projectName` (path: `./projectName/src/components/index.js`);
-  - `projectNameSelfCheck` and all subfolders and files inside (path: `./projectName/src/components/projectNameSelfCheck`);
-  - `_head.html` project `title` and `meta.content` (path: `./projectName/src/components/components/head/_head.html`)
+  - `index.js` all the occurrences of `projectName` (path: `./projectName/src/index.js`);
+  - `projectNameSelfCheck` and all subfolders and files inside (path: `./projectName/src/shared/projectNameSelfCheck/index.js`);
+  - `_head.html` project `title` and `meta.content` (path: `./projectName/src/widgets/head/_head.html`)
 - files with extension `.gitkeep` are only for adding `empty folders` to the staging area and for continious committing. Since the folder turn to be not empty you can for sure delete this files (they are for nothing but only for saving folder structure (check the link for more [what is .gitkeep for?](https://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository)));
 - check `./configs/webpack/webpack.config.js` before usage using CLI command for no errors:
   `npx webpack configtest [config-path]` so currently => `npx webpack configtest ./configs/webpack/webpack.config.js`
@@ -56,8 +55,8 @@ The boilerplate is set to use ECMAScript modules (ESM) (see the `package.json` =
 
 #### gulp
 
-`gulp` is turned to bundle multiple html components into the one `index_gulp_include.html` (path: `<project_name>/src/components/index_gulp_include.html`)).
-Also `gulp` replace html chunkes' inner assets' pathes to be valid to output `index_gulp_include.html` file and then copy and rename it to `index.html` (output `index.html` file path: `<project_name>/src/components/index.html`).
+`gulp` is turned to bundle multiple html components into the one `index_gulp_include.html` (path: `<project_name>/src/pages/index_gulp_include.html`).
+Also `gulp` replace html chunkes' inner assets' pathes to be valid to output `index_gulp_include.html` file and then copy and rename it to `index.html` (output `index.html` file path: `<project_name>/src/pages/index.html`).
 (check out the `./configs/gulp/gulpfile.js` file for details);
 
 `gulp` uses:
@@ -70,7 +69,7 @@ Also `gulp` replace html chunkes' inner assets' pathes to be valid to output `in
 
 `webpack` is turned to bundle all assets and reduce final bundle (for example: images are minimized as possible) to have as result `main.js`, `index.html`, `main.css` and `src/assets` (file structure is save as is! check my custom made function in the `output.assetModuleFilename`. It was made relying on this [webpack 5 assetModuleFilename stackoverflow.com](https://stackoverflow.com/questions/68814833/webpack-5-assets-module-how-to-keep-the-folder-structure-in-the-output-folder)).
 
-Also there's a helper functions to deal with files when they are renamed with additional hash and to import all the assets to the bundle (to use them in future, e.g. not currently desired image, and next one too) (check the `projectName/src/components/base/favorities-slider/_favoritiesSlider.js` file for `getCashedFilename` and `importAll` functions)
+Also there's a helper functions to deal with files when they are renamed with additional hash and to import all the assets to the bundle (to use them in future, e.g. not currently desired image, and next one too) (check the `./projectName/src/shared/utilities/handleFilesWithDynamicHash/_testExample.js` file for `getCashedFilename` and `importAll` functions)
 (check this [webpack official docs link about the dealing with files' hash](https://webpack.js.org/guides/dependency-management/#context-module-api) and [How to copy all images to dist folder instead of only used with webpack 5 stackoverflow.com](https://stackoverflow.com/questions/69120556/how-to-copy-all-images-to-dist-folder-instead-of-only-used-with-webpack-5)).
 
 `webpack` uses:
@@ -89,31 +88,33 @@ Also there's a helper functions to deal with files when they are renamed with ad
 
 `Sass` includes `abstracts` parts that are used in the entire boilerplate. It's an
 
-- `animations` (path: `./projectName/src/components/abstracts/_animations.scss`),
-- `constants` (path: `./projectName/src/components/abstracts/_constants.scss`),
-- `mixins` (path: `./projectName/src/components/abstracts/_mixins.scss`),
-- `placeholders` (path: `./projectName/src/components/abstracts/_placeholders.scss`).
-  You can check them for benefits or delete otherwise (also check `projectName.scss` file `./projectName/src/components/projectName.scss` to delete unused anymore scss files!).
+- `animations` (path: `./projectName/src/shared/ui/common styles/abstracts/_animations.scss`),
+- `constants` (path: `./projectName/src/shared/ui/common styles/abstracts/_constants.scss`),
+- `mixins` (path: `./projectName/src/shared/ui/common styles/abstracts/_mixins.scss`),
+- `placeholders` (path: `./projectName/src/shared/ui/common styles/abstracts/_placeholders.scss`).
+  You can check them for benefits or delete otherwise (also check `index.scss` file `./projectName/src/app/index.scss` to delete unused anymore scss files!).
 
 Also there's `base` folder with styles or classes that impact on entire boilerplate layout view and includes `Blocks` (BEM methodology). There're
 
-- `_normalize.scss` (path: `./projectName/src/components/base/_normalize.scss`) (to lead the browser styles to be browser independent, to ease crossbrowser app development),
-- `_typography.scss` (path: `./projectName/src/components/base/_typography.scss`) containing all the text heights variables,
-- `_common.scss` (path: `./projectName/src/components/base/_common.scss`) one of the most important files that introduce basic classes for `body`, `containers`, `links`, `text elements` (color-modificators, letter - spacing modificators). This classes will be fundamental for elements in the `app` or `site page` that with usage of a few of their own classes help to reach desire result with minimum efforts.
+- `_normalize.scss` (path: `./projectName/src/shared/ui/common styles/base/_normalize.scss`) (to lead the browser styles to be browser independent, to ease crossbrowser app development),
+- `_typography.scss` (path: `./projectName/src/shared/ui/common styles/base/_typography.scss`) containing all the text heights variables,
+- `_common.scss` (path: `./projectName/src/shared/ui/common styles/base/_common.scss`) one of the most important files that introduce basic classes for `body`, `containers`, `links`, `text elements` (color-modificators, letter - spacing modificators). This classes will be fundamental for elements in the `app` or `site page` that with usage of a few of their own classes help to reach desire result with minimum efforts.
 
 `layout` folder includes classes that forming `flex` or `grid` layout.
 
 ---
 
-note: pay attention to order of the imported files in the `projectName.scss`! The last improts will override previous one if there's matches in classnames or ids or tags!
+note: pay attention to order of the imported files in the `index.scss`! The last improts will override previous one if there's matches in classnames or ids or tags!
 
 ---
 
 #### JavaScript / Component approach
 
-`JS` rules all the things inside the boilerplate. The only and one. Entire boilerplate structure is made for only the goal - turn everything into the components (React one and other Frameworks like), where every component is as much as possible unconnected unit for maximum reusage in a project and not only one (with few tiny modifications). It includes `_<component_filename>.html`, `_<component_filename>.scss` and optional `_<component_filename>.js` (it's possible to include component parts into it using `webpack` features of loaders and some utilities for creating `html templates`), that implements the logic of the component. The `components` are at (path: `./projectName/src/components`).
+`JS` rules all the things inside the boilerplate. The only and one. Entire boilerplate structure is made for only the goal - turn everything into the components (React one and other Frameworks like), where every component is as much as possible unconnected and incapsulated unit for maximum reusage in a project and not only one (with few tiny modifications). It includes `_<component_filename>.html`, `_<component_filename>.scss` and optional `_<component_filename>.js` (it's possible to include component parts into it using `webpack` features of loaders and some utilities for creating `html templates`), that implements the logic of the component. The `components` are at (path: `./projectName/src/components`).
 
 There's a `htmlCreateComponentHelper` custom made by myself simple utility (commonly used pattern), that gives an oportunity to create `html templates` to use in Single Page Aplication (SPA) (load `html template` on demand using JS like in React) (check for more about the component approach implementation [the Rolling Scopes School lecture (RU) by mentor Viktar Kovalev](https://www.youtube.com/watch?v=Edue1LmnZqo));
+
+But the best possible way for nowdays is to use appropriate to your goals architecture (MVC, MVP, MVVM, Module Architecture, Atomic Design, Feature-Sliced Design(FSD) etc). The boilerplate structure is turned to use FSD architecture (to learn more about FSD check the [FSD official docs](https://feature-sliced.design/docs/get-started)).
 
 ### The boilerplate structure and brief descriptions:
 

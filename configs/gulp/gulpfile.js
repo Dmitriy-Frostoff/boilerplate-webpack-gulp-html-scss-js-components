@@ -5,14 +5,14 @@ import replace from 'gulp-replace';
 import rename from 'gulp-rename';
 
 export function html() {
-  return src('../../projectName/src/components/index_gulp_include.html')
+  return src('../../projectName/src/pages/index_gulp_include.html')
     .pipe(
       include({
         prefix: '@@',
         indent: true,
       }),
     )
-    .pipe(replace(/="(\.\.\/){3,}/gi, '="../'))
+    .pipe(replace(/="(\.\.\/){2,}/gi, '="../'))
     .pipe(rename('index.html'))
-    .pipe(dest('../../projectName/src/components/'));
+    .pipe(dest('../../projectName/src/pages/'));
 }

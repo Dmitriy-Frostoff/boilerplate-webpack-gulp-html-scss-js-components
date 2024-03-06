@@ -9,8 +9,7 @@
     "html": "gulp --gulpfile ./configs/gulp/gulpfile.js html --progress",
     "start": "webpack-dev-server --config ./configs/webpack/webpack.config.js --progress",
     "dev": "webpack --config ./configs/webpack/webpack.config.js --progress",
-    "build": "webpack --config ./configs/webpack/webpack.config.js --node-env=production --progress",
-    "style": "sass --watch ../../projectName/src/components/projectName.scss:../../projectName/dist/style.css"
+    "build": "webpack --config ./configs/webpack/webpack.config.js --node-env=production --progress"
   },
   "repository": {
     "type": "git",

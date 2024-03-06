@@ -15,7 +15,7 @@ export default {
   mode,
   target,
   devtool,
-  entry: [path.resolve(__dirname, '../../projectName/src/components/index.js')],
+  entry: [path.resolve(__dirname, '../../projectName/src/index.js')],
   output: {
     path: path.resolve(__dirname, '../../projectName/dist'),
     clean: true,
@@ -51,7 +51,7 @@ export default {
     new HtmlWebpackPlugin({
       template: path.resolve(
         __dirname,
-        '../../projectName/src/components/index.html',
+        '../../projectName/src/pages/index.html',
       ),
       inject: 'head',
     }),
