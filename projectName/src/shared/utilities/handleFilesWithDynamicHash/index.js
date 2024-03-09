@@ -1,1 +1,1 @@
-export { default as getCashedFilename } from "./_testExample.js";
+export { importAll, getCashedFilename } from './getCashedFilename.js';
