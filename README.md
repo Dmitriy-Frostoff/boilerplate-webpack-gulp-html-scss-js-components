@@ -1,12 +1,24 @@
 # boilerplate-webpack-gulp-html-scss-js-components
 
-It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css` and `js`. (everything of that is meant to be `components` and `webpack` + `gulp` are for bundling and connecting parts together) in a future project. Check out the docs below to be in `actual tune`!
+It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css`, `js` and `ts`. (everything of that is meant to be `components` and `webpack` + `gulp` are for bundling and connecting parts together) in a future project. Check out the docs below to be in `actual tune`!
 
 ---
 
 ### !Important
 
-- While using modules always set an extension to the imported file's path! Even for `*.js` files! Or you'll get an exception and `webpack` will crash.
+- **It's highly recommend do not mix `.ts` and `.js` take a choice and use one of them only!**
+- While using modules always set an extension to the imported file's path! Even for `*.js`(`*.ts`) files! Or you'll get an exception and `webpack` will crash. Otherwise add the `resolve.extensions` to the `webpack.config.js` to solve this:
+
+```js
+export default {
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", ".js"],
+  },
+};
+```
+
+<br>
+
 - Before usage - update packages and dependency versions (instruction below), than run script for build (to test for errors) (e,g, `npm run build`). Otherwise cure the exceptions(((
 - don't forget to rename all the `<project_name>` or `projectName` names to desired one! Also check the following list of files, folders and linked things, to insure about the replacement:
   - `./projectName`;
@@ -52,6 +64,58 @@ To delete an unnecessary `package` use the following command ([official npm Docs
 Note: don't forget to check `scripts` in the `package.json` to delete unnecessary one.
 
 The boilerplate is set to use ECMAScript modules (ESM) (see the `package.json` => `{"type": "module"}`);
+
+#### TypeScript
+
+`TypeScript` is also supported by the boilerplate. There's a `TS` config file (`configs/ts/tsconfig.json`) and types declaration for `TS` (`configs/ts/global.d.ts`) to handle imported assets files (e.g. `.svg`, `.html`, `scss`, `css` etc).
+
+---
+
+**!Important**
+If you're out of tending to use the `TS` so step the following moves:
+
+```bash
+  npm uninstall typescript ts-loader
+```
+
+- delete the `configs/ts` folder;
+
+- in the `webpack.config.js` delete:
+
+  ```js
+
+    ...
+
+    {
+      test: /\.tsx?$/,
+      loader: 'ts-loader',
+      options: {
+        configFile: path.resolve(__dirname, '../ts/tsconfig.json'),
+      },
+    },
+
+    ...
+
+    resolve: {
+      extensions: ['.tsx', '.ts'],
+    },
+  ```
+
+---
+
+<br>
+
+**The common struture of the `tsconfig.json` is**
+
+```ts
+  {
+    "compilerOptions": {...},
+    "include": [...],
+    "exclude": []
+  }
+```
+
+`tsconfig.json` is containing particularly default settings (check the file for details, also take a notice of the [typescriptlang.org/tsconfig](https://www.typescriptlang.org/tsconfig)).
 
 #### gulp
 
@@ -122,7 +186,7 @@ But the best possible way for nowdays is to use appropriate to your goals archit
 
 - `configs/` - the folder includes config files for: gulp, webpack packages. It's possible to add prettier/eslint/husky to the boilerplate from [boilerplate-eslint-prettier-husky](https://github.com/Dmitriy-Frostoff/boilerplate-eslint-prettier-husky);
 
-**[FSD structure](https://feature-sliced.design/docs/get-started/overview 'FSD structure official docs')**  
+**[FSD structure](https://feature-sliced.design/docs/get-started/overview "FSD structure official docs")**  
 <a href="https://feature-sliced.design/docs/get-started/overview" target="_blank">  
  <img width="50%" height="50%" src="https://feature-sliced.design/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg" alt="Feature-Sliced Design Basics"/>
 </a>
@@ -210,6 +274,23 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 
 ---
 
+#### TypeScript
+
+- [The official website of the TypeScript](https://www.typescriptlang.org/)
+- [The official github of the TypeScript](https://github.com/microsoft/TypeScript)
+- [Webpack.js.org TypeScript guide](https://webpack.js.org/guides/typescript/)
+- [The official github of the TypeScript loader for webpack](https://github.com/TypeStrong/ts-loader)
+- [TypeScript loader for webpack at npmjs.com](https://www.npmjs.com/package/ts-loader)
+- [About the TypeScript config options](https://www.typescriptlang.org/tsconfig)
+- [About the TypeScript tsc CLI Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- [Typescript-d-ts-file-not-recognized](https://stackoverflow.com/questions/59728371/typescript-d-ts-file-not-recognized)
+- [Typescript error when trying to import an html file](https://stackoverflow.com/questions/73225943/typescript-error-when-trying-to-import-an-html-file)
+- [Typescript: .d.ts file not recognized](https://stackoverflow.com/questions/59728371/typescript-d-ts-file-not-recognized)
+- [How to configure custom global interfaces (.d.ts files) for TypeScript?](https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript)
+- [How to import CSS modules with Typescript, React and Webpack](https://stackoverflow.com/questions/41336858/how-to-import-css-modules-with-typescript-react-and-webpack)
+
+---
+
 #### Gulp
 
 - [The official docs of Gulp](https://gulpjs.com/);
@@ -277,4 +358,4 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [Official node.js docs: \_\_dirname](https://nodejs.org/docs/latest/api/modules.html#__dirname);
 - [Official node.js docs: \_\_filename](https://nodejs.org/docs/latest/api/modules.html#__filename);
 
-#### done: March 09, 2024
+#### done: March 15, 2024
