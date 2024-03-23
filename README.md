@@ -1,18 +1,17 @@
 # boilerplate-webpack-gulp-html-scss-js-components
 
-It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css`, `js` and `ts`. (everything of that is meant to be `components` and `webpack` + `gulp` are for bundling and connecting parts together) in a future project. Check out the docs below to be in `actual tune`!
+It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css`, `js`. (everything of that is meant to be `components` and `webpack` + `gulp` are for bundling and connecting parts together) in a future project. Check out the docs below to be in `actual tune`!
 
 ---
 
 ### !Important
 
-- **It's highly recommend do not mix `.ts` and `.js` take a choice and use one of them only!**
-- While using modules always set an extension to the imported file's path! Even for `*.js`(`*.ts`) files! Or you'll get an exception and `webpack` will crash. Otherwise add the `resolve.extensions` to the `webpack.config.js` to solve this:
+- While using modules always set an extension to the imported file's path! Even for `*.js` files! Or you'll get an exception and `webpack` will crash. Otherwise add the `resolve.extensions` to the `webpack.config.js` to solve this:
 
 ```js
 export default {
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js"],
+    extensions: ['.jsx', '.js'],
   },
 };
 ```
@@ -24,7 +23,7 @@ export default {
   - `./projectName`;
   - `gulpfile.js` all the `src` and `dest` etc (path: `./configs/gulp/gulpfile.js`);
   - `webpack.config.js` all the occurrences of `projectName` in the `entry`, `output` etc (path: `./configs/webpack/webpack.config.js`);
-  - `index.(js|ts)` all the occurrences of `projectName` (path: `projectName/src/index.js`);
+  - `index.js` all the occurrences of `projectName` (path: `projectName/src/index.js`);
   - `projectNameSelfCheck` and all subfolders and files inside (path: `projectName/src/shared/projectNameSelfCheck/index.js`);
   - `_head.html` project `title` and `meta.content` (path: `projectName/src/widgets/head/_head.html`)
 - files with extension `.gitkeep` are only for adding `empty folders` to the staging area and for continious committing. Since the folder turn to be not empty you can for sure delete this files (they are for nothing but only for saving folder structure (check the link for more [what is .gitkeep for?](https://stackoverflow.com/questions/115983/how-do-i-add-an-empty-directory-to-a-git-repository)));
@@ -64,58 +63,6 @@ To delete an unnecessary `package` use the following command ([official npm Docs
 Note: don't forget to check `scripts` in the `package.json` to delete unnecessary one.
 
 The boilerplate is set to use ECMAScript modules (ESM) (see the `package.json` => `{"type": "module"}`);
-
-#### TypeScript
-
-`TypeScript` is also supported by the boilerplate. There's a `TS` config file (`configs/ts/tsconfig.json`) and types declaration for `TS` (`configs/ts/global.d.ts`) to handle imported assets files (e.g. `.svg`, `.html`, `scss`, `css` etc).
-
----
-
-**!Important**
-If you're out of tending to use the `TS` so step the following moves:
-
-```bash
-  npm uninstall typescript ts-loader
-```
-
-- delete the `configs/ts` folder;
-
-- in the `webpack.config.js` delete:
-
-  ```js
-
-    ...
-
-    {
-      test: /\.tsx?$/,
-      loader: 'ts-loader',
-      options: {
-        configFile: path.resolve(__dirname, '../ts/tsconfig.json'),
-      },
-    },
-
-    ...
-
-    resolve: {
-      extensions: ['.tsx', '.ts'],
-    },
-  ```
-
----
-
-<br>
-
-**The common struture of the `tsconfig.json` is**
-
-```ts
-  {
-    "compilerOptions": {...},
-    "include": [...],
-    "exclude": []
-  }
-```
-
-`tsconfig.json` is containing particularly default settings (check the file for details, also take a notice of the [typescriptlang.org/tsconfig](https://www.typescriptlang.org/tsconfig)).
 
 #### gulp
 
@@ -168,15 +115,15 @@ Also there's `base` folder with styles or classes that impact on entire boilerpl
 
 ---
 
-note: pay attention to order of the imported files in the `index.scss`! The last improts will override previous one if there's matches in classnames or ids or tags!
+**note**: pay attention to order of the imported files in the `index.scss`! The last improts will override previous one if there's matches in classnames or ids or tags!
 
 ---
 
 #### JavaScript / Component approach
 
-`JS` (or `TS` with a few modifications) rules all the things inside the boilerplate. The only and one. Entire boilerplate structure is made for only the goal - turn everything into the hierarchical components (React one and other Frameworks like), where every component is as much as possible unconnected and incapsulated unit for maximum reusage by higher ordered ones in a project (it's must be the only strict linear connection from higher standing components to lower one due to Feature-Sliced Design(FSD) architecture principle!).
+`JS` rules all the things inside the boilerplate. The only and one. Entire boilerplate structure is made for only the goal - turn everything into the hierarchical components (React one and other Frameworks like), where every component is as much as possible unconnected and incapsulated unit for maximum reusage by higher ordered ones in a project (it's must be the only strict linear connection from higher standing components to lower one due to Feature-Sliced Design(FSD) architecture principle!).
 
-There're chunks like `_<component_filename>.html`, `_<component_filename>.scss` and optional `_<component_filename>.js` It's possible to include them into upper - standing `index.(js|ts)` using `webpack` features of loaders and some utilities for creating `html templates`. The `index.(js|ts)` plays a role of `public api` for other components to import and usage.
+There're chunks like `_<component_filename>.html`, `_<component_filename>.scss` and optional `_<component_filename>.js` It's possible to include them into upper - standing `index.js` using `webpack` features of loaders and some utilities for creating `html templates`. The `index.js` plays a role of `public api` for other components to import and usage.
 
 There's a `htmlCreateComponentHelper` custom made by myself simple utility (commonly used pattern like factory), that gives an oportunity to create `html templates` to use in a Single Page Aplication (SPA) (nest `html template` on demand with JS usage, React style like) (check for more about the component approach implementation [the Rolling Scopes School lecture (RU) by mentor Viktar Kovalev](https://www.youtube.com/watch?v=Edue1LmnZqo));
 
@@ -186,7 +133,7 @@ But the best possible way for nowdays is to use appropriate to your goals archit
 
 - `configs/` - the folder includes config files for: gulp, webpack packages. It's possible to add prettier/eslint/husky to the boilerplate from [boilerplate-eslint-prettier-husky](https://github.com/Dmitriy-Frostoff/boilerplate-eslint-prettier-husky);
 
-**[FSD structure](https://feature-sliced.design/docs/get-started/overview "FSD structure official docs")**  
+**[FSD structure](https://feature-sliced.design/docs/get-started/overview 'FSD structure official docs')**  
 <a href="https://feature-sliced.design/docs/get-started/overview" target="_blank">  
  <img width="50%" height="50%" src="https://feature-sliced.design/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg" alt="Feature-Sliced Design Basics"/>
 </a>
@@ -197,7 +144,7 @@ But the best possible way for nowdays is to use appropriate to your goals archit
 
   1. `projectName/src/shared` - `layer`, there're reusable functionality, detached from the specifics of the project/business. (e.g. UIKit, libs, API).
 
-     **Take a notice: `shared` slice doesn't have it's main `Public API file` `index.(js|ts)`! Instead the `Public API file` is only inside the ready - to - use `segment`!!!**
+     **Take a notice: `shared` slice doesn't have it's main `Public API file` `index.js`! Instead the `Public API file` is only inside the ready - to - use `segment`!!!**
 
   - `projectName/src/shared/api` - `slice`, all the APIs for usage all over the app / project from the backend;
   - `projectName/src/shared/assets` - `slice`, there're all the images, icons, fonts, music, video etc sources of a future project as is (includes `segements` in other words);
@@ -224,9 +171,9 @@ But the best possible way for nowdays is to use appropriate to your goals archit
 
     - `projectName/src/shared/utilities/handleFilesWithDynamicHash` - `segment`, the utility to improt all files from folder (to nest it to the bundle). Check the example and docs inside the `projectName/src/shared/utilities/handleFilesWithDynamicHash/importAllfromFolder.js` for more;
 
-    - `projectName/src/shared/utilities/htmlCreateComponent` - `segment`, as described above it's an utility to turn your `*.html` chunk file improted to the `*.(js|ts)` code into the `html template` to use it in your app (e.g. in a `SPA`). Check the example and docs inside the `projectName/src/shared/utilities/htmlCreateComponent/htmlCreateComponentHelper.js` for more;
+    - `projectName/src/shared/utilities/htmlCreateComponent` - `segment`, as described above it's an utility to turn your `*.html` chunk file improted to the `*.js` code into the `html template` to use it in your app (e.g. in a `SPA`). Check the example and docs inside the `projectName/src/shared/utilities/htmlCreateComponent/htmlCreateComponentHelper.js` for more;
 
-  **all the next (or higher - ordered `slices`) include Public API `index.(js|ts)` directly inside the slice (folder) to interract with higher - ordered slices or head - chief over the slices `index.(js|ts)` file. Use them only to import necessary parts / functionality and to keep `slices` encapsulation**
+  **all the next (or higher - ordered `slices`) include Public API `index.js` directly inside the slice (folder) to interract with higher - ordered slices or head - chief over the slices `index.js` file. Use them only to import necessary parts / functionality and to keep `slices` encapsulation**
 
   2. `projectName/src/entities` — business entities. (e.g., User, Product, Order).  
      More descriptions: Contains the shell of the card with slots for content and the interactive elements. The tile representing the post author is also here, but in a different slice. Simple words say: the product of your internet market, a song of your audioplayer;
@@ -271,23 +218,6 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [The official docs of The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html);
 - [Clean Architecture on Frontend by Alex Bespoyasov](https://bespoyasov.me/blog/clean-architecture-on-frontend/);
 - [Architecture of modern FRONTEND applications. 5 types. Advantages and disadvantages by `Ulbi TV`(RU)](https://www.youtube.com/watch?v=c3JGBdxfYcU&t=3s);
-
----
-
-#### TypeScript
-
-- [The official website of the TypeScript](https://www.typescriptlang.org/)
-- [The official github of the TypeScript](https://github.com/microsoft/TypeScript)
-- [Webpack.js.org TypeScript guide](https://webpack.js.org/guides/typescript/)
-- [The official github of the TypeScript loader for webpack](https://github.com/TypeStrong/ts-loader)
-- [TypeScript loader for webpack at npmjs.com](https://www.npmjs.com/package/ts-loader)
-- [About the TypeScript config options](https://www.typescriptlang.org/tsconfig)
-- [About the TypeScript tsc CLI Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
-- [Typescript-d-ts-file-not-recognized](https://stackoverflow.com/questions/59728371/typescript-d-ts-file-not-recognized)
-- [Typescript error when trying to import an html file](https://stackoverflow.com/questions/73225943/typescript-error-when-trying-to-import-an-html-file)
-- [Typescript: .d.ts file not recognized](https://stackoverflow.com/questions/59728371/typescript-d-ts-file-not-recognized)
-- [How to configure custom global interfaces (.d.ts files) for TypeScript?](https://stackoverflow.com/questions/42233987/how-to-configure-custom-global-interfaces-d-ts-files-for-typescript)
-- [How to import CSS modules with Typescript, React and Webpack](https://stackoverflow.com/questions/41336858/how-to-import-css-modules-with-typescript-react-and-webpack)
 
 ---
 
@@ -358,4 +288,4 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [Official node.js docs: \_\_dirname](https://nodejs.org/docs/latest/api/modules.html#__dirname);
 - [Official node.js docs: \_\_filename](https://nodejs.org/docs/latest/api/modules.html#__filename);
 
-#### done: March 15, 2024
+#### done: March 23, 2024

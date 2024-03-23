@@ -19,10 +19,9 @@
  *
  *   export { footerHTMLSection };
  */
-
 export default function htmlCreateComponentHelper(stringWithHTML) {
   /** @param {string} template */
-  const template = document.createElement('template');
+  const template = document.createElement("template");
   template.innerHTML = stringWithHTML;
   /** @param {object} template.content */
   return template.content;
