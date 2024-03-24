@@ -8,7 +8,7 @@
     "html+dev": "gulp --gulpfile ./configs/gulp/gulpfile.js html && webpack --config ./configs/webpack/webpack.config.js --progress",
     "html": "gulp --gulpfile ./configs/gulp/gulpfile.js html --progress",
     "start": "webpack-dev-server --config ./configs/webpack/webpack.config.js --progress",
-    "dev": "webpack --config ./configs/webpack/webpack.config.js --progress",
+    "dev": "webpack --config ./configs/webpack/webpack.config.js --node-env=development --progress",
     "build": "webpack --config ./configs/webpack/webpack.config.js --node-env=production --progress"
   },
   "repository": {
