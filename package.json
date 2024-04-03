@@ -1,7 +1,7 @@
 {
   "name": "boilerplate-webpack-gulp-html-scss-js-components",
   "version": "1.0.0",
-  "description": "It's a boilerplate for usage of Webpack, Gulp, SCSS, HTML, JS, TS in a future project. Check out the docs below to be in actual tune!",
+  "description": "It's a boilerplate for usage of Webpack, Gulp, SCSS, HTML, JS in a future project. Check out the docs below to be in actual tune!",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -22,7 +22,6 @@
     "scss",
     "css",
     "js",
-    "ts",
     "components"
   ],
   "author": "Dmitriy Frostoff",
@@ -33,7 +32,7 @@
   "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components#readme",
   "devDependencies": {
     "css-loader": "^6.10.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-cli": "^3.0.0",
     "gulp-file-include": "^2.3.0",
     "gulp-rename": "^2.0.0",

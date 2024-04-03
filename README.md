@@ -1,6 +1,6 @@
 # boilerplate-webpack-gulp-html-scss-js-components
 
-It's a boilerplate for usage of `webpack 5+`, `gulp 4+`, `html`, `scss/css`, `js`. (everything of that is meant to be `components` and `webpack` + `gulp` are for bundling and connecting parts together) in a future project. Check out the docs below to be in `actual tune`!
+It's a boilerplate for usage of `webpack 5+`, `gulp 5+`, `html`, `scss/css`, `js`. (everything of that is meant to be `components` and `webpack` + `gulp` are for bundling and connecting parts together) in a future project. Check out the docs below to be in `actual tune`!
 
 ---
 
@@ -39,10 +39,10 @@ export default {
 To check the outdated packages:  
 `npm outdated`
 
-To update all the outdated packages (note: this command do not update devDependencies in the package.json!):  
+To update all the outdated packages (**note**: this command do not update devDependencies in the package.json!):  
 `npm update`
 
-To update one `package` (note: this command do not update devDependency in the package.json!):  
+To update one `package` (**note**: this command do not update devDependency in the package.json!):  
 `npm update <package_name>`
 
 To update all the outdated packages and refresh all devDependencies in the package.json:  
@@ -60,7 +60,7 @@ than will install them. (check the [How can I update each dependency in package.
 
 To delete an unnecessary `package` use the following command ([official npm Docs](https://docs.npmjs.com/uninstalling-packages-and-dependencies)):  
 `npm uninstall <package_name>`  
-Note: don't forget to check `scripts` in the `package.json` to delete unnecessary one.
+**note**: don't forget to check `scripts` in the `package.json` to delete unnecessary one.
 
 The boilerplate is set to use ECMAScript modules (ESM) (see the `package.json` => `{"type": "module"}`);
 
@@ -89,7 +89,7 @@ Also there's a helper functions to deal with files when they are renamed with ad
 - `html-webpack-plugin` to nest final `script.js` file (currently to the `head` of html file. Check `inject: 'head'` option in the `./configs/webpack/webpack.config.js` HtmlWebpackPlugin options) and final `main.css` styles file to the final html template.
 - `image-minimizer-webpack-plugin`, `imagemin`, `imagemin-gifsicle`, `imagemin-jpegtran`, `imagemin-optipng`, `imagemin-svgo` - a fable things to reduce size of the image resources with lossless quality optimization (can be changed, use offical docs for more);
 - `mini-css-extract-plugin` - to bundle final external css file;
-- `resolve-url-loader` - loader for Sass to ease assets pathes' setting relying on current file but not to the output one (note: `sourceMap: true` in the `sass-loader` options is lifeworth required for working the plugin!!!);
+- `resolve-url-loader` - loader for Sass to ease assets pathes' setting relying on current file but not to the output one (**note**: `sourceMap: true` in the `sass-loader` options is lifeworth required for working the plugin!!!);
 - `sass` - for using all SCSS / Sass features;
 - `sass-loader` - loader for ability to read and use `.scss` / `.sass` files inside `*.js` one;
 
@@ -239,7 +239,7 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [The official docs of Webpack: Concepts](https://webpack.js.org/concepts/);
 - [The official docs of Webpack: Command Line Interface](https://webpack.js.org/api/cli);
 - [A mostly complete guide to webpack 5 (2020) by Valentino Gagliardi](https://www.valentinog.com/blog/webpack/)  
-  (note: a little bit outdated. There's a CMJ webpack config was used, but never the less is far usefull!!!);
+  (**note**: a little bit outdated. There's a CMJ webpack config was used, but never the less is far usefull!!!);
 - [How to transpile ES modules with webpack and Node.js, Dec 15, 2021 by Alexander Nnakwue](https://blog.logrocket.com/transpile-es-modules-with-webpack-node-js/);
 - [Stackoverflow.com answers about dealling with ES modules and '\_\_dirname' in node.js](https://stackoverflow.com/questions/46745014/alternative-for-dirname-in-node-js-when-using-es6-modules);
 - [Official github repo of webpack-cli](https://github.com/webpack/webpack-cli);
@@ -288,4 +288,4 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [Official node.js docs: \_\_dirname](https://nodejs.org/docs/latest/api/modules.html#__dirname);
 - [Official node.js docs: \_\_filename](https://nodejs.org/docs/latest/api/modules.html#__filename);
 
-#### done: March 23, 2024
+#### done: April 03, 2024
