@@ -20,7 +20,7 @@
     "gulp",
     "html",
     "scss",
-    "css",
+    "css-modules",
     "js",
     "components"
   ],

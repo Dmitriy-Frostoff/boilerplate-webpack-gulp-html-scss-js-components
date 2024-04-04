@@ -113,6 +113,13 @@ Also there's `base` folder with styles or classes that impact on entire boilerpl
 
 `layout` folder includes classes that forming `flex` or `grid` layout.
 
+Also it's possible to use `css-modules` via the `css-loader` (check the [css-loader](https://github.com/webpack-contrib/css-loader?tab=readme-ov-file#modules) for details). Read more about the `css-modules` usage at [css-modules](https://github.com/css-modules/css-modules?tab=readme-ov-file) and then just turn the `.(css|sass|scss)` extension of the file with styles into `.module.(css|scss|sass)`.
+
+So, there're possible usage of the global styles all over the project (common ui styles to prevent unnecessary classes multiplications) and locally scoped `*.module.(css|sass|scss)` styles for `segments`, `slices` or `layers` that contain component's unique data and are small and potentially can have classNames similarity problems all over the project.
+
+Long story short say all the `.(css|scss|sass)` files are handled as `global` (normal) CSS, and `.module.(css|scss|sass)`
+are `css-modules` with `local` scope.
+
 ---
 
 **note**: pay attention to order of the imported files in the `index.scss`! The last imports will override previous one if there's matches in classnames or ids or tags!
@@ -204,6 +211,43 @@ But the best possible way for nowdays is to use appropriate to your goals archit
 
 [Also useful link(RU) about the FSD architecture with clear definition and examples by @IrkaTyman](https://habr.com/ru/articles/795823/);
 
+**Important!** If you tend only to transfer module to upper hierarchy one (e.g. `index.scss` from the `app` layer to the main `index.js`) do the following steps:
+
+```js
+// projectName/src/app/index.js
+import "./index.scss";
+```
+
+than
+
+```js
+// projectName/src/index.js
+import "./app/index.js";
+```
+
+to clarify the `Webpack` to handle it correctly.
+
+If there's a need to use imported as a data (e.g. import `.html` file to handle it as a string) step the following:
+
+```js
+// projectName/src/app/index.js
+import anyNameYouWish from "../pages/index.html";
+export { anyNameYouWish };
+```
+
+than
+
+```js
+// projectName/src/index.js
+import "./app/index.js"; /*e.g. to import index.scss from example above (to demand Webpack load global styles)
+this is only to show, that it possible to use import 'entireModule' and import {something} from 'entireModule'
+*/
+import { anyNameYouWish } from "./app/index.js";
+```
+
+If there're files like `chunk.abc5d.(css|js|anyExt)` in the `dist` folder so take care of correctness of usage
+dynamic `import()`s because exactly it usage (that is `async` naturally) trigger Webpack to emit `fileChunks` [read more here](https://github.com/webpack/webpack/issues/12464).
+
 With the new `packages` releases, the ones above can turn to pumpkin, so check'em out with official docs!!!
 
 ### Links:
@@ -266,6 +310,7 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [Official github repo of imagemin-jpegtran](https://github.com/imagemin/imagemin-jpegtran);
 - [Official github repo of imagemin-optipng](https://github.com/imagemin/imagemin-optipng);
 - [Official github repo of imagemin-svgo](https://github.com/imagemin/imagemin-svgo);
+- [Webpack 5 creates chunks even though maxChunks set to 1 only with 2 JS entry points](https://github.com/webpack/webpack/issues/12464#issuecomment-766727668);
 
 ---
 
@@ -288,4 +333,4 @@ With the new `packages` releases, the ones above can turn to pumpkin, so check'e
 - [Official node.js docs: \_\_dirname](https://nodejs.org/docs/latest/api/modules.html#__dirname);
 - [Official node.js docs: \_\_filename](https://nodejs.org/docs/latest/api/modules.html#__filename);
 
-#### done: April 03, 2024
+#### done: April 04, 2024
