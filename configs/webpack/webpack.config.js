@@ -70,13 +70,20 @@ export default {
       {
         test: /\.(c|sc|sa)ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              defaultExport: true,
+            },
+          },
           {
             loader: 'css-loader',
             options: {
+              esModule: true,
               modules: {
                 auto: true,
                 localIdentName: '[name]_[hash:base64:5]',
+                namedExport: true,
               },
               importLoaders: 2,
             },
