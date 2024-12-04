@@ -9,7 +9,8 @@
     "html": "gulp --gulpfile ./configs/gulp/gulpfile.js html --progress",
     "start": "webpack-dev-server --config ./configs/webpack/webpack.config.js --progress",
     "dev": "webpack --config ./configs/webpack/webpack.config.js --node-env=development --progress",
-    "build": "webpack --config ./configs/webpack/webpack.config.js --node-env=production --progress"
+    "build": "webpack --config ./configs/webpack/webpack.config.js --node-env=production --progress",
+    "update:packages": "node ./configs/execa/main.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
     "scss",
     "css-modules",
     "js",
-    "components"
+    "components",
+    "execa"
   ],
   "author": "Dmitriy Frostoff",
   "license": "MIT",
@@ -32,6 +34,7 @@
   "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
+    "execa": "^9.5.1",
     "gulp": "^5.0.0",
     "gulp-cli": "^3.0.0",
     "gulp-file-include": "^2.3.0",
@@ -47,9 +50,9 @@
     "imagemin-svgo": "^11.0.1",
     "mini-css-extract-plugin": "^2.9.2",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.81.0",
-    "sass-loader": "^16.0.3",
-    "webpack": "^5.96.1",
+    "sass": "^1.82.0",
+    "sass-loader": "^16.0.4",
+    "webpack": "^5.97.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   }
