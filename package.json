@@ -34,7 +34,7 @@
   "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components#readme",
   "devDependencies": {
     "css-loader": "^7.1.2",
-    "execa": "^9.6.0",
+    "execa": "^9.6.1",
     "gulp": "^5.0.1",
     "gulp-cli": "^3.1.0",
     "gulp-file-include": "^2.3.0",
@@ -50,9 +50,9 @@
     "imagemin-svgo": "^11.0.1",
     "mini-css-extract-plugin": "^2.9.4",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.94.2",
+    "sass": "^1.97.1",
     "sass-loader": "^16.0.6",
-    "webpack": "^5.103.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
